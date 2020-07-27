@@ -1,42 +1,41 @@
 <article>
+  <h2>Editable Dynamic Table</h2>
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="{{col}}" *ngFor="let col of displayedColumns">
-      <section>
-        <th mat-header-cell *matHeaderCellDef>
-          <span *ngIf="col !== '$$edit'">
-            {{col}}
+      <th mat-header-cell *matHeaderCellDef>
+        <span *ngIf="col !== '$$edit'">
+          {{col}}
+        </span>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="!element.isEdit">
+          <div class="btn-edit" *ngIf="col === '$$edit'; spanHeader" >
+            <button (click)="element.isEdit = !element.isEdit">Edit</button>
+          </div>
+          <span #spanHeader>
+            {{element[col]}}
           </span>
-        </th>
-        <td mat-cell *matCellDef="let row">
-          <div *ngIf="!row.isEdit">
-            <div class="btn-edit" *ngIf="col === '$$edit'" >
-              <button (click)="row.isEdit = !row.isEdit">Edit</button>
-            </div>
-            <span #elseBlock>
-              {{row[col]}}
-            </span>
+        </div>
+        <div *ngIf="element.isEdit">
+          <div class="btn-edit" *ngIf="col === '$$edit'; else dateField">
+            <button (click)="element.isEdit = !element.isEdit">Done</button>
           </div>
-          <div *ngIf="row.isEdit">
-            <div class="btn-edit" *ngIf="col === '$$edit'; else dateField">
-              <button (click)="row.isEdit = !row.isEdit">Done</button>
-            </div>
-            <ng-template #dateField>
-              <mat-form-field appearance="fill" #elseDate *ngIf="dataSchema[col] === 'date'; else defaultField">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </ng-template>
-            <ng-template #defaultField>
-              <mat-form-field>
-                <mat-label>{{col}}</mat-label>
-                <input type="{{dataSchema[col]}}" matInput value="{{row[col]}}">
-              </mat-form-field>
-            </ng-template>
-          </div>
-        </td>
-      </section>
+          <ng-template #dateField>
+            <mat-form-field appearance="fill" #elseDate *ngIf="dataSchema[col] === 'date'; else defaultField">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" value="{{element[col]}}">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </ng-template>
+          <ng-template #defaultField>
+            <mat-form-field>
+              <mat-label>{{col}}</mat-label>
+              <input type="{{dataSchema[col]}}" matInput value="{{element[col]}}">
+            </mat-form-field>
+          </ng-template>
+        </div>
+      </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
