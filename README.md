@@ -1,6 +1,6 @@
 # Editable Dynamic Angular Material Table
 
-This repository is an example to demonstrate how to create an editable table that can consume a schema and dynamically change input types on the UI. Please refer to [this article](https://levelup.gitconnected.com/convert-a-form-image-to-an-html-form-using-amazon-textract-and-nodejs-d4d7c1a2b0c5) for thorough explanation.
+This repository is an example to demonstrate how to create an editable table that can consume a schema and dynamically change input types on the UI. Please refer to [this article](https://levelup.gitconnected.com/convert-a-form-image-to-an-html-form-using-amazon-textract-and-nodejs-d4d7c1a2b0c5) for a thorough explanation.
 
 ![](assets/AngularDynamicTable - 2.mp4)
 
