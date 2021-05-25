@@ -12,6 +12,7 @@ const USER_SCHEMA = {
   "occupation": "text",
   "dateOfBirth": "date",
   "age": "number",
+  "edit": "edit"
 }
 
 @Component({
@@ -20,7 +21,7 @@ const USER_SCHEMA = {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  displayedColumns: string[] = ['name', 'occupation', 'dateOfBirth', 'age', '$$edit'];
+  displayedColumns: string[] = ['name', 'occupation', 'dateOfBirth', 'age', 'edit'];
   dataSource = USER_INFO;
   dataSchema = USER_SCHEMA;
 }
