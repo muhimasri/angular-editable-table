@@ -9,3 +9,25 @@ h2 {
     text-align: center;
     padding-top: 20px;
 }
+
+.table-header {
+    width: 90%;
+    margin: auto;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.button-add-row {
+    background: #1b9e1b;
+    color: #ffffff;
+}
+
+.button-remove-rows {
+    background: red;
+    color: #ffffff;
+    margin-right: 5px;
+}
+
+.button-remove {
+    color: red;
+}

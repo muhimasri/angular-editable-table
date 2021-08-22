@@ -1,5 +1,9 @@
 <article>
   <h2>Editable Dynamic Table</h2>
+  <article class="table-header">
+    <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove Rows</button>
+    <button class="button-add-row" mat-button (click)="addRow()">Add Row</button>
+  </article>
   <table mat-table [dataSource]="dataSource">
     <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
       <th mat-header-cell *matHeaderCellDef>
@@ -9,7 +13,11 @@
       </th>
       <td mat-cell *matCellDef="let element">
         <div *ngIf="!element.isEdit">
-          <div class="btn-edit" *ngIf="col === 'edit'; spanHeader" >
+          <ng-container *ngIf="col === 'select'">
+            <mat-checkbox (change)="element.selected = $event.checked"></mat-checkbox>
+          </ng-container>
+          <div class="btn-edit" *ngIf="col === 'edit'; spanHeader">
+            <button mat-button class="button-remove" (click)="removeRow(element.id)">Delete</button>
             <button (click)="element.isEdit = !element.isEdit">Edit</button>
           </div>
           <span #spanHeader>
