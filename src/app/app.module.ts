@@ -12,11 +12,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { FormsModule } from '@angular/forms';
     MatNativeDateModule,
     FormsModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

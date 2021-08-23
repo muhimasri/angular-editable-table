@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 const USER_INFO = [
   {id: 1, "name": "John Smith", "occupation": "Advisor", "dateOfBirth": "1984-05-05", "age": 36},
@@ -13,7 +14,8 @@ const USER_SCHEMA = {
   "occupation": "text",
   "dateOfBirth": "date",
   "age": "number",
-  "edit": "edit"
+  "edit": "edit",
+  "select": "select"
 }
 
 @Component({
@@ -38,21 +40,10 @@ export class AppComponent {
   }
 
   removeSelectedRows() {
-    // this.dialog.open(ConfirmDialog).afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });;
-    this.dataSource = this.dataSource.filter((u: any) => !u.selected);
+    this.dialog.open(ConfirmDialogComponent).afterClosed().subscribe(confirm => {
+      if (confirm) {
+        this.dataSource = this.dataSource.filter((u: any) => !u.selected);
+      }
+    });
   }
 }
-
-// @Component({
-//   selector: 'confirm-dialog',
-//   template: /*html*/`
-//     <h1 mat-dialog-title>Are you sure you want to delete?</h1>
-//     <div mat-dialog-actions>
-//     <button mat-button mat-dialog-close>Cancel</button>
-//       <button mat-button mat-dialog-close>Yes</button>
-//     </div>
-//   `,
-// })
-// export class ConfirmDialog {}

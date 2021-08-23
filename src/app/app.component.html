@@ -25,6 +25,8 @@
           </span>
         </div>
         <div [ngSwitch]="dataSchema[col]" *ngIf="element.isEdit">
+              <div *ngSwitchCase="'select'">
+              </div>
               <div class="btn-edit" *ngSwitchCase="'edit'">
                 <button (click)="element.isEdit = !element.isEdit">Done</button>
               </div>
