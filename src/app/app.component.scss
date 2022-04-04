@@ -1,34 +1,43 @@
-table {
+p {
+    font-family: Lato;
+  }
+  table {
     width: 90%;
     margin: auto;
     margin-top: 25px;
-}
-.btn-edit {
+  }
+  .btn-edit {
     text-align: right;
-}
-h2 {
+  }
+  h2 {
     text-align: center;
     padding-top: 20px;
-}
-
-.table-header {
+  }
+  
+  .table-header {
     width: 90%;
     margin: auto;
     text-align: right;
     margin-bottom: 10px;
-}
-
-.button-add-row {
+  }
+  
+  .button-add-row {
     background: #1b9e1b;
     color: #ffffff;
-}
-
-.button-remove-rows {
+  }
+  
+  .button-remove-rows {
     background: red;
     color: #ffffff;
     margin-right: 5px;
-}
-
-.button-remove {
+  }
+  
+  .button-remove {
     color: red;
-}
+  }
+  
+  .form-input {
+    min-width: 110px;
+    width: auto;
+  }
+  
