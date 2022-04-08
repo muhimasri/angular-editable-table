@@ -6,7 +6,7 @@ import { User, UserColumns } from './model/user';
 import { UserService } from './services/user.service';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
@@ -24,7 +24,7 @@ export class AppComponent {
     });
   }
 
-  editRow(row: any) {
+  editRow(row: User) {
     if (row.id === 0) {
       this.userService.addUser(row).subscribe((newUser: User) => {
         row.id = newUser.id;
