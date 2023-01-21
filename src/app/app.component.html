@@ -17,14 +17,22 @@
 </article>
 <table mat-table [dataSource]="dataSource">
   <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-    <th mat-header-cell *matHeaderCellDef>
-      {{ col.label }}
+    <th mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+      <span *ngSwitchCase="'isSelected'">
+        <mat-checkbox
+          (change)="selectAll($event)"
+          [checked]="isAllSelected()"
+          [indeterminate]="!isAllSelected() && isAnySelected()"
+        ></mat-checkbox>
+      </span>
+      <span *ngSwitchDefault>{{ col.label }}</span>
     </th>
     <td mat-cell *matCellDef="let element">
       <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
         <ng-container *ngSwitchCase="'isSelected'">
           <mat-checkbox
             (change)="element.isSelected = $event.checked"
+            [checked]="element.isSelected"
           ></mat-checkbox>
         </ng-container>
         <div class="btn-edit" *ngSwitchCase="'isEdit'">
